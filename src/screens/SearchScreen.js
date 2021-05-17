@@ -6,7 +6,8 @@ import yelp from '../api/yelp';
 import {
 	View,
 	Text,
-	StyleSheet
+	StyleSheet,
+	ScrollView
 } from 'react-native'
 
 import useResults from '../hooks/useResults'
@@ -72,7 +73,7 @@ const SearchScreen = () => {
 	// 	searchApi('pasta')
 	// }, []);
 	return (
-		<View>
+		<View style={{flex:1}}>
 		<SearchBar term={term} 
 		onTermChange={
 			function(newTerm)
@@ -84,11 +85,15 @@ const SearchScreen = () => {
 
 		/>
 
-		<Text>We have found {results.length} results </Text>
+		<Text style={{marginLeft:15}}>We have found {results.length} results </Text>
 		{<Text> {(errorMessage ? <Text>"Something Went wrong"</Text> :null)} </Text> }
+
+		<ScrollView>
 		<ResultsList results={filterResulysByPrice('$')} title="CostEffective"/>
 		<ResultsList results={filterResulysByPrice('$$')} title="Bit Pricier"/>
 		<ResultsList results={filterResulysByPrice('$$$')} title="Big Spender"/>
+		</ScrollView>
+
 		</View>
 
 	)

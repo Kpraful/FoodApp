@@ -7,6 +7,8 @@ import {
 	FlatList,
 } from 'react-native'
 
+import ResultsDetails from './ResultsDetails'
+
 const ResultsList = ({
 	results,
 	title
@@ -20,6 +22,8 @@ const ResultsList = ({
 
 		horizontal={true}
 
+		showsHorizontalScrollIndicator={false}
+
 		data={results}
 
 		keyExtractor={(results) => results.id}
@@ -30,7 +34,9 @@ const ResultsList = ({
 			{
 				// element==={item: {all the data of list we get} ,index:item.id}
 				// console.log(element)
-				return <Text>{item.name}</Text>
+				return (
+						<ResultsDetails result={item}/>
+					)
 			}
 		}
 
@@ -44,6 +50,7 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 18,
 		fontWeight: 'bold',
+		marginLeft: 15,
 	}
 })
 

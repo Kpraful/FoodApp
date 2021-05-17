@@ -39,7 +39,7 @@ export default () => {
 
 	//Correct aproach
 	useEffect(() => {
-		searchApi('pasta')
+		searchApi('samosa')
 	}, []);
 
 	return [searchApi, results, errorMessage];

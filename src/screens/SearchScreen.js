@@ -16,7 +16,9 @@ import SearchBar from '../Components/SearchBar'
 
 import ResultsList from '../Components/ResultsList'
 
-const SearchScreen = () => {
+const SearchScreen = ({navigation}) => {
+
+	
 
 	const [term, setTerm] = useState('');
 
@@ -73,7 +75,7 @@ const SearchScreen = () => {
 	// 	searchApi('pasta')
 	// }, []);
 	return (
-		<View style={{flex:1}}>
+		<>
 		<SearchBar term={term} 
 		onTermChange={
 			function(newTerm)
@@ -84,25 +86,19 @@ const SearchScreen = () => {
 		onTermSubmit={ () => searchApi(term) }
 
 		/>
-
-		<Text style={{marginLeft:15}}>We have found {results.length} results </Text>
 		{<Text> {(errorMessage ? <Text>"Something Went wrong"</Text> :null)} </Text> }
 
 		<ScrollView>
-		<ResultsList results={filterResulysByPrice('$')} title="CostEffective"/>
-		<ResultsList results={filterResulysByPrice('$$')} title="Bit Pricier"/>
-		<ResultsList results={filterResulysByPrice('$$$')} title="Big Spender"/>
+		<ResultsList results={filterResulysByPrice('$')} title="CostEffective" navigation={navigation}/>
+		<ResultsList results={filterResulysByPrice('$$')} title="Bit Pricier" navigation={navigation}/>
+		<ResultsList results={filterResulysByPrice('$$$')} title="Big Spender" navigation={navigation}/>
 		</ScrollView>
 
-		</View>
+		</>
 
 	)
 };
 
-const styles = StyleSheet.create({
 
-
-
-});
 
 export default SearchScreen;

@@ -5,13 +5,15 @@ import {
 	Text,
 	StyleSheet,
 	FlatList,
+	TouchableOpacity,
 } from 'react-native'
 
 import ResultsDetails from './ResultsDetails'
 
 const ResultsList = ({
 	results,
-	title
+	title,
+	navigation,
 }) => {
 	return (
 		<View>
@@ -35,7 +37,9 @@ const ResultsList = ({
 				// element==={item: {all the data of list we get} ,index:item.id}
 				// console.log(element)
 				return (
+					<TouchableOpacity onPress = {() => navigation.navigate('ResultsShow')} >
 						<ResultsDetails result={item}/>
+					</TouchableOpacity>
 					)
 			}
 		}

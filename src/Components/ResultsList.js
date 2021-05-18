@@ -8,13 +8,17 @@ import {
 	TouchableOpacity,
 } from 'react-native'
 
+import {withNavigation} from 'react-navigation'
+
 import ResultsDetails from './ResultsDetails'
 
-const ResultsList = ({
-	results,
-	title,
-	navigation,
-}) => {
+const ResultsList = ({ results,	title,	navigation,}) => {
+	
+	if(!results.length)
+	{
+		return null;
+	}
+
 	return (
 		<View>
 		<Text style={styles.title}>
@@ -37,7 +41,7 @@ const ResultsList = ({
 				// element==={item: {all the data of list we get} ,index:item.id}
 				// console.log(element)
 				return (
-					<TouchableOpacity onPress = {() => navigation.navigate('ResultsShow')} >
+					<TouchableOpacity onPress = {() => navigation.navigate('ResultsShow', {id:item.id})} >
 						<ResultsDetails result={item}/>
 					</TouchableOpacity>
 					)
@@ -58,4 +62,4 @@ const styles = StyleSheet.create({
 	}
 })
 
-export default ResultsList;
+export default withNavigation(ResultsList); //exporting extra function so it will navigate

@@ -16,7 +16,7 @@ import SearchBar from '../Components/SearchBar'
 
 import ResultsList from '../Components/ResultsList'
 
-const SearchScreen = ({navigation}) => {
+const SearchScreen = () => {
 
 	
 
@@ -89,9 +89,9 @@ const SearchScreen = ({navigation}) => {
 		{<Text> {(errorMessage ? <Text>"Something Went wrong"</Text> :null)} </Text> }
 
 		<ScrollView>
-		<ResultsList results={filterResulysByPrice('$')} title="CostEffective" navigation={navigation}/>
-		<ResultsList results={filterResulysByPrice('$$')} title="Bit Pricier" navigation={navigation}/>
-		<ResultsList results={filterResulysByPrice('$$$')} title="Big Spender" navigation={navigation}/>
+		<ResultsList results={filterResulysByPrice('$')} title="CostEffective" />
+		<ResultsList results={filterResulysByPrice('$$')} title="Bit Pricier" />
+		<ResultsList results={filterResulysByPrice('$$$')} title="Big Spender" />
 		</ScrollView>
 
 		</>

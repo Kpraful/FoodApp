@@ -1,3 +1,4 @@
+console.log("SearchScreen")
 import React, {
 	useState,
 	useEffect
